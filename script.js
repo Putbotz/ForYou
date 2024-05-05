@@ -4,8 +4,22 @@ const gif = document.querySelector(".gif");
 const yesBtn = document.querySelector(".yes-btn");
 const noBtn = document.querySelector(".no-btn");
 
+const responses = [
+  "Aaaaa, I like you too",
+  "Yay! We're going to have so much fun together!",
+  "Awesome! Let's make some memories!",
+  "Woo-hoo! You're the best!",
+  "Great choice! Let's go on an adventure!",
+];
+
+// Function to get a random response from the array
+const getRandomResponse = () => {
+  const index = Math.floor(Math.random() * responses.length);
+  return responses[index];
+};
+
 yesBtn.addEventListener("click", () => {
-  question.innerHTML = "Aaaaa, I like you too";
+  question.innerHTML = getRandomResponse();
   gif.src =
     "https://raw.githubusercontent.com/DzarelDeveloper/Img/main/gif.webp";
 });
