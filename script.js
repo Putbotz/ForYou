@@ -12,16 +12,34 @@ const responses = [
   "Great choice! Let's go on an adventure!",
 ];
 
+// Preload the GIF image
+const preloadImage = (url) => {
+  const img = new Image();
+  img.src = url;
+};
+
+preloadImage("https://raw.githubusercontent.com/DzarelDeveloper/Img/main/gif.webp");
+
 // Function to get a random response from the array
 const getRandomResponse = () => {
   const index = Math.floor(Math.random() * responses.length);
   return responses[index];
 };
 
+let isProcessing = false; // Flag to prevent multiple rapid clicks
+
 yesBtn.addEventListener("click", () => {
+  if (isProcessing) return; // Prevent multiple rapid clicks
+  isProcessing = true;
+
   question.innerHTML = getRandomResponse();
   gif.src =
     "https://raw.githubusercontent.com/DzarelDeveloper/Img/main/gif.webp";
+
+  // Reset the flag after a delay
+  setTimeout(() => {
+    isProcessing = false;
+  }, 1000); // Adjust the delay as needed
 });
 
 noBtn.addEventListener("mouseover", () => {
